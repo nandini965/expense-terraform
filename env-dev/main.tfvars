@@ -46,7 +46,7 @@ app = {
     app_port = 8080
   }
   backend = {
-    name = backend
+    name = "backend"
     instance_type = "t3.micro"
     max_size = 10
     min_size = 1
