@@ -3,7 +3,7 @@ locals {
     tags   = {
       business_unit = "ecommerce"
       business_type = "retail"
-      project_name  = "expence"
+      project_name  = "expense"
       cost_center   = 100
       env           = var.env
     }
