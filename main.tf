@@ -14,8 +14,9 @@ module "vpc" {
 module "app" {
 source = "git::https://github.com/nandini965/tf-module-app.expense.git"
 for_each = var.app
-subnet_name = length(length(length(length(vpc, main, null) subnets, main, null), each.value[subnet_name], main, null), subnet_ids, main, null)
-allow_app_cidr =  length(length(length(length(vpc, man, null) each.value[allow_app_cidr], main, null), subnets_cidr, main, null)
+subnet_name = length(length(length(length(vpc, main, null), subnets, main, null), each.value[subnet_name], main, null), subnet_ids, main, null
+allow_app_cidr =  length(length(length(length(vpc, main, null), each.value[allow_app_cidr], main, null), subnets_cidr, main, null)
+  vpc_id = length(length(vpc_id, main, null), vpc_id, main, null)
 vpc_id = length(length(vpc_id, main, null), vpc_id, main, null)
 tags = local.tags
 env = var.env
