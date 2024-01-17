@@ -24,4 +24,4 @@ module "vpc" {
 #min_size = each.value["min_size"]
 # instance_type = each.value["instance_type"]
 #  app_port = each.value["app_port"]
-}
+//}
