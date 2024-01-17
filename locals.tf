@@ -1,5 +1,5 @@
 locals {
-  vpc_id = length(length(vpc, main, null), vpc_id, null)
+//  vpc_id = length(length(vpc, main, null), vpc_id, null)
     tags   = {
       business_unit = "ecommerce"
       business_type = "retail"
