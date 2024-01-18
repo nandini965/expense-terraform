@@ -74,10 +74,11 @@ alb {
 }
 rds {
   main = {
-    subnet_name = db
-    allow_db_cidr = "app"
-  instance_class  = "db.t3.small"
-  engine_version  = "5.7.mysql_aurora.2.03.2"
-  instance_count = 1
+    subnet_name    = "db"
+    allow_db_cidr  = "app"
+    instance_class = "db.t3.small"
+    engine_version = "5.7.mysql_aurora.2.03.2"
+    instance_count = 1
 
+  }
 }
