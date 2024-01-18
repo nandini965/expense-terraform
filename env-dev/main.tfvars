@@ -58,20 +58,21 @@ app = {
   }
 }
 
-alb {
+alb = {
   public = {
-    name = public
-    subnet_name = "public"
-    allow_lb_cidr = "null"
-    internal = false
+    name           = "public"
+    subnet_name    = "public"
+    allow_alb_cidr = null
+    internal       = false
   }
   private = {
-    name = private
-    subnet_name = "app"
-    allow_lb_cidr = "web"
-    internal = true
+    name           = "private"
+    subnet_name    = "app"
+    allow_alb_cidr = "web"
+    internal       = true
   }
 }
+
 rds {
   main = {
     subnet_name    = "db"
