@@ -19,7 +19,10 @@ module "app" {
   subnet_ids     = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnets_ids", null)
   vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_app_cidr"], null), "subnets_cidr", null)
- desired_capacity = each.value["desired_capacity"]
+  listener_arn   = lookup(lookup(module.alb, each.value["lb_type"], null), "listener_arn", null)
+  lb_dns_name    = lookup(lookup(module.alb, each.value["lb_type"], null), "dns_name", null)
+
+  desired_capacity = each.value["desired_capacity"]
  max_size = each.value["max_size"]
  min_size = each.value["min_size"]
  instance_type = each.value["instance_type"]
@@ -28,6 +31,7 @@ module "app" {
   tags = local.tags
   env = var.env
   kms_arn = var.kms_arn
+  listener_priority =each.value["listener_priority"]
 
 }
 

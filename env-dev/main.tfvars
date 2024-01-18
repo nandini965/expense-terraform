@@ -44,6 +44,7 @@ app = {
     max_size          = 10
     min_size          = 1
     app_port          = 80
+    listener_priority = 1
 
   }
   backend = {
@@ -55,7 +56,7 @@ app = {
     max_size          = 10
     min_size          = 1
     app_port          = 8080
-
+   listener_priority = 2
   }
 }
 
