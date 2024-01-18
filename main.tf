@@ -13,8 +13,8 @@ module "vpc" {
 
 module "app" {
   depends_on = [module.vpc, module.rds, module.alb]
-source = "git::https://github.com/nandini965/tf-module-app.expense.git"
-for_each = var.app
+  source = "git::https://github.com/nandini965/tf-module-app.expense.git"
+ for_each = var.app
   subnet_ids     = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnets_ids", null)
   vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_app_cidr"], null), "subnets_cidr", null)

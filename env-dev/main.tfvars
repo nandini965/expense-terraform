@@ -36,24 +36,25 @@ vpc = {
 }
 app = {
   frontend = {
-    name = "frontend"
-    instance_type = "t3.micro"
-    max_size = 10
-    min_size = 1
-    desired_capacity = 1
-    subnet_name = "web"
-    allow_app_cidr = "public"
-    app_port = 80
+    name              = "frontend"
+    instance_type     = "t3.small"
+    subnet_name       = "web"
+    allow_app_cidr    = "public"
+    desired_capacity  = 1
+    max_size          = 10
+    min_size          = 1
+    app_port          = 80
+
   }
   backend = {
-    name = "backend"
-    instance_type = "t3.micro"
-    max_size = 10
-    min_size = 1
-    desired_capacity = 1
-    subnet_name = "app"
-    allow_app_cidr = "app"
-    app_port = 8080
+    name              = "backend"
+    instance_type     = "t3.small"
+    subnet_name       = "app"
+    allow_app_cidr    = "app"
+    desired_capacity  = 1
+    max_size          = 10
+    min_size          = 1
+    app_port          = 8080
 
   }
 }
@@ -75,7 +76,7 @@ alb = {
 
 rds = {
   main = {
-    subnet_name = "db"
+    subnet_name   = "db"
     allow_db_cidr = "db"
     engine_version = "5.7.mysql_aurora.2.11.2"
     instance_count = 1
