@@ -1,3 +1,3 @@
-output vpc {
-  vpc_id = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+utput "vpc" {
+  value = lookup(lookup(module.vpc, "main", null), "subnets", null)
 }
