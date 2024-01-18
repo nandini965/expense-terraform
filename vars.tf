@@ -8,3 +8,6 @@ variable "bastion_cidr" {}
 variable "alb" {}
 variable "kms_arn" {}
 variable "rds" {}
+variable "domain_id" {}
+variable "domain_name" {}
+
