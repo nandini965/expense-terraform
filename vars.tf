@@ -5,6 +5,6 @@ variable "default_vpc_cidr" {}
 variable "default_vpc_rtid" {}
 variable "app" {}
 variable "bastion_cidr" {}
-variable alb {}
+variable "alb" {}
 variable "kms_arn" {}
 variable "rds" {}
