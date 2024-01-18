@@ -33,16 +33,16 @@ module "vpc" {
 //}
 
 module "alb" {
-  source = "git::https://github.com/nandini965/tf-module-alb.expense.git"
-  for_each = var.alb
-  name = each.value["name"]
-  tags = local.tags
-  env = var.env
-  internal = each.value["internal"]
-  subnets     = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnets_ids", null)
+  source         = "git::https://github.com/nandini965/tf-module-alb.expense.git"
+  for_each       = var.alb
+  name           = each.value["name"]
+  tags           = local.tags
+  env            = var.env
+  internal       = each.value["internal"]
+  subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnets_ids", null)
   allow_alb_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), "app", null), "subnets_cidr", null)
-  vpc_id = local.vpc_id
-
+  vpc_id         = local.vpc_id
+}
 module "rds" {
   source = "git::https://github.com/nandini965/tf-module-rds.expense.git"
   for_each = var.rds
