@@ -28,7 +28,6 @@ module "app" {
   tags = local.tags
   env = var.env
   kms_arn = var.kms_arn
-  azs = var.azs
 
 }
 
