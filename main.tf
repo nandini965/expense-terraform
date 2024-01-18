@@ -42,8 +42,7 @@ module "alb" {
   subnets     = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnets_ids", null)
   allow_alb_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), "app", null), "subnets_cidr", null)
   vpc_id = local.vpc_id
-  app_port = each.value["app_port"]
-}
+
 module "rds" {
   source = "git::https://github.com/nandini965/tf-module-rds.expense.git"
   for_each = var.rds
