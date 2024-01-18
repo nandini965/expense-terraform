@@ -45,7 +45,7 @@ module "rds" {
   instance_count = each.value["instance_count"]
   engine_version = each.value["engine_version"]
   subnets     = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnets_ids", null)
-  allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_app_cidr"], null), "subnets_cidr", null)
+  allow_db_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_app_cidr"], null), "subnets_cidr", null)
   tags = local.tags
   env = var.env
   vpc_id = local.vpc_id
