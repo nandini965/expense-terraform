@@ -11,26 +11,26 @@ module "vpc" {
   default_vpc_rtid = var.default_vpc_rtid
 }
 
-#module "app" {
-#  depends_on = [module.vpc, module.rds, module.alb]
-#  source = "git::https://github.com/nandini965/tf-module-app.expense.git"
-#  name = each.value["name"]
-# for_each = var.app
-#  subnet_ids     = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnets_ids", null)
-#  vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#  allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_app_cidr"], null), "subnets_cidr", null)
-# desired_capacity = each.value["desired_capacity"]
-# max_size = each.value["max_size"]
-# min_size = each.value["min_size"]
-# instance_type = each.value["instance_type"]
-#  app_port = each.value["app_port"]
-#  bastion_cidr = var.bastion_cidr
-#  tags = local.tags
-#  env = var.env
-# // kms_arn = var.kms_arn
-#  azs = var.azs
+module "app" {
+  depends_on = [module.vpc, module.rds, module.alb]
+  source = "git::https://github.com/nandini965/tf-module-app.expense.git"
+  name = each.value["name"]
+ for_each = var.app
+  subnet_ids     = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnets_ids", null)
+  vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_app_cidr"], null), "subnets_cidr", null)
+ desired_capacity = each.value["desired_capacity"]
+ max_size = each.value["max_size"]
+ min_size = each.value["min_size"]
+ instance_type = each.value["instance_type"]
+  app_port = each.value["app_port"]
+  bastion_cidr = var.bastion_cidr
+  tags = local.tags
+  env = var.env
+  kms_arn = var.kms_arn
+  azs = var.azs
 
-//}
+}
 
 module "alb" {
   source         = "git::https://github.com/nandini965/tf-module-alb.expense.git"
