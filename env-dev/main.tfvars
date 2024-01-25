@@ -74,7 +74,7 @@ vpc = {
 #    internal       = true
 #  }
 #}
-#
+
 #rds = {
 #  main = {
 #    subnet_name   = "db"
